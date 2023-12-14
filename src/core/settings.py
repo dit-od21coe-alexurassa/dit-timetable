@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 
     'general.apps.GeneralConfig',
     'university.apps.UniversityConfig',
+    'shared.apps.SharedConfig',
 ]
 
 MIDDLEWARE = [

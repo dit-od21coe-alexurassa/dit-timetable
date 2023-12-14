@@ -6,9 +6,9 @@ from ..models import AcademicYear
 from ..forms import AcademicYearForm
 
 
-class AcademicYearListCreateView(generic.ListView, generic.CreateView):
+class AcademicYearsListCreateView(generic.ListView, generic.CreateView):
 
-    template_name = "university/academic_years.html"
+    template_name = "university/academic-years.html"
     form_class = AcademicYearForm
     success_url = reverse_lazy("university:academic_years")
 

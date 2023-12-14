@@ -1,14 +1,9 @@
-from django import forms
+from shared.forms import StyledModelForm
 
 from ..models import AcademicYear
 
 
-class AcademicYearForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for visible_field in self.visible_fields():
-            visible_field.field.widget.attrs['class'] = 'form-control'
+class AcademicYearForm(StyledModelForm):
 
     class Meta:
         model = AcademicYear
