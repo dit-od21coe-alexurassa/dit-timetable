@@ -4,22 +4,28 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='AcademicYear',
+            name="AcademicYear",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=9)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=9)),
             ],
             options={
-                'db_table': 'university_academic_year',
-                'ordering': ['name', 'id'],
+                "db_table": "university_academic_year",
+                "ordering": ["name", "id"],
             },
         ),
     ]

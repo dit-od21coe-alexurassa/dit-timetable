@@ -5,7 +5,6 @@ from ..models import IntakeStream
 
 
 class IntakeStreamForm(StyledModelForm):
-
     class Meta:
         model = IntakeStream
         fields = ["class_code"]

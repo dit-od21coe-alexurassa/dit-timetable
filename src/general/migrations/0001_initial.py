@@ -4,23 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='WeekDay',
+            name="WeekDay",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=8, unique=True)),
-                ('sort_order', models.IntegerField(default=0, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=8, unique=True)),
+                ("sort_order", models.IntegerField(default=0, unique=True)),
             ],
             options={
-                'db_table': 'general_week_day',
-                'ordering': ['sort_order'],
+                "db_table": "general_week_day",
+                "ordering": ["sort_order"],
             },
         ),
     ]

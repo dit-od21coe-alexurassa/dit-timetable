@@ -4,8 +4,6 @@ from ..models import AcademicYear
 
 
 class AcademicYearForm(StyledModelForm):
-
     class Meta:
         model = AcademicYear
-        fields = ['name']
-        
+        fields = ["name"]

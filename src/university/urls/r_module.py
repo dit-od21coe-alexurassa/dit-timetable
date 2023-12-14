@@ -3,7 +3,7 @@ from django.urls import re_path
 from ..views import ModulesListCreateView, ModuleDetailUpdateDelete
 
 
-app_name: str = 'modules'
+app_name: str = "modules"
 
 
 urlpatterns = [

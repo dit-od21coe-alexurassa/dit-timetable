@@ -3,7 +3,7 @@ from django.urls import re_path
 from ..views import LecturersListCreateView, LecturerDetailUpdateDelete
 
 
-app_name: str = 'lecturers'
+app_name: str = "lecturers"
 
 
 urlpatterns = [

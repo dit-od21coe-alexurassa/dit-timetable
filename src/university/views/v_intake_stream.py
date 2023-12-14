@@ -20,18 +20,21 @@ class IntakeStreamsListCreateView(ListCreateView):
         return IntakeStream.objects.filter(intake_class__exact=self.get_intake_class())
 
     def get_success_url(self) -> str:
-        return reverse_lazy('university:intake_classes:streams:list', kwargs={'class_pk', self.get_intake_class().pk })
+        return reverse_lazy(
+            "university:intake_classes:streams:list",
+            kwargs={"class_pk", self.get_intake_class().pk},
+        )
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['intake_class'] = self.get_intake_class()
+        context["intake_class"] = self.get_intake_class()
         return context
-    
+
     def get_intake_class(self) -> IntakeClass or Http404:
-        return get_object_or_404(IntakeClass, pk__exact=self.kwargs.get('class_pk'))
-    
+        return get_object_or_404(IntakeClass, pk__exact=self.kwargs.get("class_pk"))
+
     def form_valid(self, form):
         stream: IntakeStream = form.save(commit=False)
         stream.intake_class = self.get_intake_class()
         stream.save()
-        return super().form_valid(form) 
+        return super().form_valid(form)
