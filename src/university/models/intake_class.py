@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from .ac_year import AcademicYear
 
@@ -10,6 +11,10 @@ class IntakeClass(models.Model):
 
     def __str__(self) -> str:
         return self.class_code
+    
+    def get_absolute_url(self):
+        return reverse("university:intake_classes:detail", kwargs={"class_pk": self.pk})
+    
 
     class Meta:
         ordering = ['class_code']
@@ -23,6 +28,9 @@ class IntakeStream(models.Model):
 
     def __str__(self) -> str:
         return self.class_code
+    
+    def get_absolute_url(self):
+        return reverse("university:intake_classes:streams:detail", kwargs={"class_pk": self.intake_class.pk, "stream_pk": self.pk})
     
     class Meta:
             ordering = ['class_code']

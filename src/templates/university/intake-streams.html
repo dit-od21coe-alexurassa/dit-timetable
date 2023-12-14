@@ -1,12 +1,12 @@
 {% extends "../base/base.html" %}
 
-{% block title %}Intake classes{% endblock title %}
+{% block title %}Intake streams{% endblock title %}
 
 {% block content_outlet %}
 
-<div class="d-flex justify-content-between align-items-center">
-    <h3>Intake classes</h3>
-    <button class="btn btn-primary btn-sm" type="button" aria-label="Add" data-bs-toggle="modal" data-bs-target="#add-intake-class-modal">Add Intake</button>
+<div class="d-flex justify-content-between align-items-center border-bottom my-3">
+    <h3>Streams of {{ intake_class.class_code }} </h3>
+    <button class="btn btn-primary btn-sm" type="button" aria-label="Add" data-bs-toggle="modal" data-bs-target="#add-intake-class-modal">Add Stream</button>
 </div>
 
 
@@ -15,18 +15,16 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Class Code</th>
-                <th>Academic Yr</th>
+                <th>Intake class</th>
+                <th>Intake stream code</th>
             </tr>
         </thead>
 
         <tbody>
-            {% for intake_class in intake_classes %}
+            {% for stream in intake_streams %}
             <tr>
-                <td> 
-                    <a href="{{ intake_class.get_absolute_url }}">{{ intake_class.class_code }} </a>
-                </td>
-                <td> {{ intake_class.academic_year.name }}</td>
+                <td> {{ stream.intake_class.class_code }} </td>
+                <td> {{ stream.class_code }} </td>
             </tr>
             {% endfor %}
         </tbody>

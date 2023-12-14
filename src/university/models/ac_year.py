@@ -11,7 +11,7 @@ class AcademicYear(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("university:academic_years", kwargs={"pk": self.pk})
+        return reverse("university:academic_years:detail", kwargs={"pk": self.pk})
     
     
     class Meta:

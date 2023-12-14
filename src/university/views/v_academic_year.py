@@ -10,7 +10,7 @@ class AcademicYearsListCreateView(generic.ListView, generic.CreateView):
 
     template_name = "university/academic-years.html"
     form_class = AcademicYearForm
-    success_url = reverse_lazy("university:academic_years")
+    success_url = reverse_lazy("university:academic_years:list")
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         return {
