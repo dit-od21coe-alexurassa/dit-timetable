@@ -1,1 +1,2 @@
 from .f_academic_year import AcademicYearForm
+from .f_intake_class import IntakeClassForm
