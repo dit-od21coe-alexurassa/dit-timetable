@@ -1,0 +1,34 @@
+{% extends "../base/base.html" %}
+
+{% block title %}Lecturer{% endblock title %}
+
+{% block content_outlet %}
+
+
+<div class="row row-cols-md-2 row-cols-1">
+    <div class="col-md-8 col-12">
+        <h3 class="alert alert-secondary border-bottom border-dark-subtle rounded-0"> Lecturer detail</h3>
+
+            <form action="" method="post" class="form-section" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tbody>
+                            {{ form.as_table }}
+                        </tbody>
+                    </table>
+                </div>
+
+                {% include "../base/form-btns.html" %}
+            </form>
+        </div>
+    <div class="col-md-4 col-12">
+        <h4>Actions&colon;</h4>
+
+        <div class="actions-container">
+            <button class="btn btn-danger btn-md">Delete</button>
+        </div>
+    </div>
+</div>
+
+{% endblock content_outlet %}

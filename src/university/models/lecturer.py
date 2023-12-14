@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Lecturer(models.Model):
@@ -9,6 +10,9 @@ class Lecturer(models.Model):
 
     def __str__(self) -> str:
         return self.full_name
+    
+    def get_absolute_url(self):
+        return reverse("university:lecturers:detail", kwargs={"pk": self.pk})
 
     class Meta:
         ordering = ['full_name']
