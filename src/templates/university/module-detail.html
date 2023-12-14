@@ -1,15 +1,16 @@
 {% extends "../base/base.html" %}
 
-{% block title %}Intake class{% endblock title %}
+{% block title %}Module{% endblock title %}
 
 {% block content_outlet %}
 
 
 <div class="row row-cols-md-2 row-cols-1">
     <div class="col-md-8 col-12">
-        <h3 class="alert alert-secondary border-bottom border-dark-subtle rounded-0"> Intake class: {{ intake_class.class_code }} </h3>
+        <h3 class="alert alert-secondary border-bottom border-dark-subtle rounded-0"> Module detail</h3>
 
             <form action="" method="post" class="form-section">
+                {% csrf_token %}
                 <div class="table-responsive">
                     <table class="table table-borderless">
                         <tbody>
@@ -26,28 +27,8 @@
 
         <div class="actions-container">
             <button class="btn btn-danger btn-md">Delete</button>
-
-            <div class="mt-4">
-                <h6>Available streams</h6>
-
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                         <tbody>
-                            {% for stream in intake_class.intake_stream_set.all %}
-
-                            <tr>
-                                <td> {{ stream.class_code }} </td>
-                            </tr>
-                            
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-
-
 
 {% endblock content_outlet %}

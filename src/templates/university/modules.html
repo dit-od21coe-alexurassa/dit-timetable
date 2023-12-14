@@ -1,0 +1,64 @@
+{% extends "../base/base.html" %}
+
+{% block title %}Modules{% endblock title %}
+
+{% block content_outlet %}
+
+<div class="d-flex justify-content-between align-items-center border-bottom my-3">
+    <h3>Modules</h3>
+    <button class="btn btn-primary btn-sm" type="button" aria-label="Add" data-bs-toggle="modal" data-bs-target="#add-module-modal">Add module</button>
+</div>
+
+
+<!-- table -->
+<div class="table-container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Module code</th>
+                <th>Module title</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for module in modules %}
+            <tr>
+                <td> 
+                    <a href="{{ module.get_absolute_url }}">{{ module.code }}</a>
+                </td>
+                <td> {{ module.title }} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- add modal -->
+<div class="modal fade" id="add-module-modal" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="post">
+
+                {% include "../base/modal-header.html" %}
+
+                <div class="modal-body">
+
+                    <div class="form-section">
+                        <table class="table table-borderless">
+                            <tbody>
+                                {% csrf_token %}
+
+                                {{ form.as_table }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {% include "../base/form-btns.html" %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content_outlet %}
