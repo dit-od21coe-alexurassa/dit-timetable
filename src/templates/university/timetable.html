@@ -1,0 +1,14 @@
+{% extends "../base/base.html" %}
+
+{% block title %}Timetable{% endblock title %}
+
+{% block content_outlet %}
+
+<ul>
+  {% for timetable_record in timetables %}
+
+  <li>{{ timetable_record }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock content_outlet %}
