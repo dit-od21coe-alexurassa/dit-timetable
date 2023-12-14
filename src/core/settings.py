@@ -25,6 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'general.apps.GeneralConfig',
+    'university.apps.UniversityConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,8 +66,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'timetable_project',
+        'HOST': 'localhost',
+        'USER': 'postgres',
+        'PORT': 5432,
+        'PASSWORD': 'Alex@psql23'
     }
 }
 
