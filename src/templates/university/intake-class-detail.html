@@ -29,20 +29,22 @@
 
             <div class="mt-4">
                 <h6>Available streams</h6>
-
-                <div class="table-responsive">
+                    <div class="table-responsive">
                     <table class="table table-striped">
                          <tbody>
-                            {% for stream in intake_class.intake_stream_set.all %}
+                            {% for stream in intake_class.streams.all %}
 
                             <tr>
-                                <td> {{ stream.class_code }} </td>
+                                <td> 
+                                    <a href="{{ stream.get_absolute_url }}">{{ stream.stream_code }}</a>
+                                </td>
                             </tr>
                             
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>

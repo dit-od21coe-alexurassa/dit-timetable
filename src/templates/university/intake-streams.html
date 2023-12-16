@@ -11,11 +11,10 @@
 
 
 <!-- table -->
-<div class="table-container">
+<div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Intake class</th>
                 <th>Intake stream code</th>
             </tr>
         </thead>
@@ -23,8 +22,7 @@
         <tbody>
             {% for stream in intake_streams %}
             <tr>
-                <td> {{ stream.intake_class.class_code }} </td>
-                <td> {{ stream.class_code }} </td>
+                <td> <a href="{% url "university:intake_classes:streams:detail" class_pk=stream.intake_class.pk stream_pk=stream.pk %}">{{ stream.stream_code }}</a> </td>
             </tr>
             {% endfor %}
         </tbody>

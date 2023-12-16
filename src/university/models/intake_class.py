@@ -20,11 +20,15 @@ class IntakeClass(models.Model):
 
 
 class IntakeStream(models.Model):
-    intake_class = models.ForeignKey(to=IntakeClass, on_delete=models.CASCADE)
-    class_code = models.CharField(max_length=20, unique=True)
+    """Signify the divided portion of an intake class"""
+
+    intake_class = models.ForeignKey(
+        to=IntakeClass, on_delete=models.CASCADE, related_name="streams"
+    )
+    stream_code = models.CharField(max_length=20, unique=True)
 
     def __str__(self) -> str:
-        return self.class_code
+        return self.stream_code
 
     def get_absolute_url(self):
         return reverse(
@@ -33,5 +37,5 @@ class IntakeStream(models.Model):
         )
 
     class Meta:
-        ordering = ["class_code"]
+        ordering = ["stream_code"]
         db_table = "university_intake_stream"

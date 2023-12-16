@@ -2,6 +2,7 @@ from typing import Any
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
+from django.views import generic
 
 from shared.utils import ListCreateView
 
@@ -19,10 +20,10 @@ class IntakeStreamsListCreateView(ListCreateView):
     def get_queryset(self):
         return IntakeStream.objects.filter(intake_class__exact=self.get_intake_class())
 
-    def get_success_url(self) -> str:
+    def get_success_url(self):
         return reverse_lazy(
             "university:intake_classes:streams:list",
-            kwargs={"class_pk", self.get_intake_class().pk},
+            kwargs={"class_pk", self.kwargs.get("class_pk")},
         )
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
@@ -38,3 +39,24 @@ class IntakeStreamsListCreateView(ListCreateView):
         stream.intake_class = self.get_intake_class()
         stream.save()
         return super().form_valid(form)
+
+
+class IntakeStreamDetailUpdateView(generic.DetailView, generic.UpdateView):
+    template_name = "university/intake_stream_detail.html"
+    form_class = IntakeStreamForm
+    pk_url_kwarg = "stream_pk"
+    queryset = IntakeStream.objects.all()
+    context_object_name = "stream"
+
+
+class IntakeStreamDeleteView(generic.DeleteView):
+    template_name = "university/intake_stream_delete.html"
+    pk_url_kwarg = "stream_pk"
+    queryset = IntakeStream.objects.all()
+    context_object_name = "stream"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "university:intake_classes:streams:list",
+            kwargs={"class_pk": self.get_object().intake_class.pk},
+        )

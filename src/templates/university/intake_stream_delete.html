@@ -1,0 +1,23 @@
+{% extends "../base/base.html" %}
+
+{% block title %}Intake stream{% endblock title %}
+
+{% block content_outlet %}
+
+
+<div class="row row-cols-md-2 row-cols-1">
+    <div class="col-md-8 col-12">
+        <h4 class="alert alert-secondary border-bottom border-dark-subtle rounded-0 fw-light"> Want to delete stream?</h4>
+
+            <blockquote>This object might have related objects</blockquote>
+
+            <form action="" method="post" class="form-section">
+                {% csrf_token %}
+
+                <input class="btn btn-danger btn-sm" type="submit" value="Yes, Delete" />
+                <a href="{{ stream.get_absolute_url }}" class="btn btn-warning btn-sm">No, Cancel</a>
+            </form>
+        </div>
+</div>
+
+{% endblock content_outlet %}
