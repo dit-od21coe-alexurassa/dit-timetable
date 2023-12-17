@@ -22,7 +22,7 @@
         <tbody>
             {% for stream in intake_streams %}
             <tr>
-                <td> <a href="{% url "university:intake_classes:streams:detail" class_pk=stream.intake_class.pk stream_pk=stream.pk %}">{{ stream.stream_code }}</a> </td>
+                <td> <a href="{{ stream.get_absolute_url }}">{{ stream.stream_code }}</a> </td>
             </tr>
             {% endfor %}
         </tbody>

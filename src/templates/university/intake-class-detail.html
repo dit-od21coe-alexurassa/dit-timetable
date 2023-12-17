@@ -43,7 +43,9 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                </div>
+                </div> 
+
+                <a href="{% url 'university:intake_classes:streams:list' class_pk=intake_class.pk %}" class="mt-4 text-decoration-none">View all streams</a>
 
             </div>
         </div>

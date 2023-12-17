@@ -23,7 +23,7 @@ class IntakeStreamsListCreateView(ListCreateView):
     def get_success_url(self):
         return reverse_lazy(
             "university:intake_classes:streams:list",
-            kwargs={"class_pk", self.kwargs.get("class_pk")},
+            kwargs={"class_pk", self.get_intake_class().pk},
         )
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
