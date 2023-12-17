@@ -24,7 +24,7 @@
         <tbody>
             {% for lecturer in lecturers %}
             <tr>
-                <td><img src="{{ lecturer.avatar }}" alt="{{ lecturer.full_name }}"></td>
+                <td><img src="{{ lecturer.avatar.url }}" alt="{{ lecturer.full_name }}" class="tbl-avatar"/></td>
                 <td> 
                     <a href="{{ lecturer.get_absolute_url }}">{{ lecturer.full_name }}</a>
                 </td>
@@ -39,7 +39,7 @@
 <div class="modal fade" id="add-lecturer-modal" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
 
                 {% include "../base/modal-header.html" %}
 
