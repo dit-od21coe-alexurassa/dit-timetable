@@ -15,9 +15,7 @@ class LecturersListCreateView(ListCreateView):
         return Lecturer.objects.all()
 
 
-class LecturerDetailUpdateView(
-    generic.UpdateView, generic.DetailView
-):
+class LecturerDetailUpdateView(generic.UpdateView, generic.DetailView):
     form_class = LecturerForm
     queryset = Lecturer.objects.all()
     template_name = "university/lecturer_detail.html"
@@ -27,4 +25,3 @@ class LecturerDeleteView(generic.DeleteView):
     template_name = "university/lecturer_delete.html"
     queryset = Lecturer.objects.all()
     success_url = reverse_lazy("university:lecturers:list")
-    

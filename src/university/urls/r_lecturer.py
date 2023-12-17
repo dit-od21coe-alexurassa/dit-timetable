@@ -1,6 +1,10 @@
 from django.urls import re_path
 
-from ..views import LecturersListCreateView, LecturerDetailUpdateView, LecturerDeleteView
+from ..views import (
+    LecturersListCreateView,
+    LecturerDetailUpdateView,
+    LecturerDeleteView,
+)
 
 
 app_name: str = "lecturers"
