@@ -1,0 +1,80 @@
+{% extends "../../base/base.html" %}
+
+{% block title %}Timetable: {{ timetable.title }} {% endblock title %}
+
+{% block content_outlet %}
+
+
+<div class="container-sm">
+    <div class="row row-cols-md-2 row-cols-1">
+        <div class="col-md-8 col-12">
+            <h3 class="alert alert-secondary border-bottom border-dark-subtle rounded-0"> {{ timetable.title }} </h3>
+    
+                <form action="" method="post" class="form-section">
+                    {% csrf_token %}
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                {{ form.as_table }}
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    {% include "../../base/form-btns.html" %}
+                </form>
+
+
+                <!-- timetable view -->
+                <div class="mt-5 py-4 border-top border-dark-subtle">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-3">Sessions</h4>
+
+                        <button class="btn btn-sm btn-primary" id="toggle-add-session-modal" data-bs-toggle="modal" data-bs-target="#add-session-modal" role="button">Add session</button>
+                    </div>
+
+
+                    {% include "./timetable.html" %}
+                </div>
+            </div>
+
+            <!-- actions col -->
+        <div class="col-md-4 col-12">
+            <h4>Actions&colon;</h4>
+    
+            <div class="actions-container d-flex gap-3 flex-row">
+    
+            </div>                        
+        </div>
+    </div>
+</div>
+
+
+<!-- add modal -->
+<div class="modal fade" id="add-session-modal" data-bs-backdrop="static" aria-describedby="toggle-add-session-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{% url 'university:timetables:sessions:add' timetable.pk %}" method="post">
+                {% csrf_token %}
+
+                {% include "../../base/modal-header.html" %}
+
+                <div class="modal-body">
+
+                    <div class="form-section">
+                        <table class="table table-borderless">
+                            <tbody>
+
+                                {{ session_form.as_table }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {% include "../../base/form-btns.html" %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content_outlet %}

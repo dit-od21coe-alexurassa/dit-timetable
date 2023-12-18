@@ -17,4 +17,7 @@ urlpatterns = [
     re_path(
         r"lecturers/", include("university.urls.r_lecturer", namespace="lecturers")
     ),
+    re_path(
+        r"timetables/", include("university.urls.r_timetable", namespace="timetables")
+    ),
 ]

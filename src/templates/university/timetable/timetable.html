@@ -1,0 +1,55 @@
+<ul class="nav nav-tabs" role="tablist">
+    {% for week_day in week_days %}
+    <li class="nav-item">
+        <button class="nav-link" id="weekday-tab-{{ week_day.sort_order }}" data-bs-target="#weekday-{{ week_day.sort_order }}" data-bs-toggle="tab" aria-selected="{% if week_day.sort_order == 0 %}active{% endif %}">{{ week_day.name }}</button>
+    </li>
+    {% endfor %}
+</ul>
+
+<div class="tab-content" id="weekdays-tab-content">
+    {% for week_day in week_days %}
+    <div class="tab-pane fade {% if week_day.sort_order == 0 %}show active{% endif %}" id="weekday-{{ week_day.sort_order }}" role="tabpanel" aria-describedby="weekday-tab-{{ week_day.sort_order }}">
+        {% for session in sessions %}
+        {% if session.week_day == week_day %}
+        <div class="table-responsive">
+            <table class="table table-light">
+
+                <div class="tbody">
+                        <tr>
+                            <th scope="row">Module</th>
+                            <td> {{ session.module.title }} ({{ session.module.code }}) </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Venue</th>
+                            <td> {{ session.venue }} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Duration</th>
+                            <td>
+                                <p><strong>Start&colon;</strong> {{ session.start_time }} </p>
+                                <p><strong>End&colon;</strong> {{ session.end_time }} </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Lecturer details</th>
+                            <td>
+                                <img src="{{ session.lecturer.avatar.url }}" alt="{{ session.lecturer.full_name }} avatar">
+
+                                <p class="my-3"> {{ session.lecturer.full_name }} </p>
+                                <p class="my-3"> {{ session.lecturer.email }} </p>
+                            </td>
+                        </tr>
+                    </div>
+                            
+                </table>
+            </div>
+            {% endif %}
+        {% endfor %}
+
+        {% if sessions.count == 0 %}
+        <h5>No any session which is currently added for this day.</h5>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+</div>

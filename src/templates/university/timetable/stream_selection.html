@@ -1,0 +1,22 @@
+{% extends "../../base/base.html" %}
+
+{% block title %}Stream selection{% endblock title %}
+
+{% block content_outlet %}
+
+<div class="container">
+    <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% for stream in object_list %}
+        <!-- stream -->
+        <div class="card">
+            <div class="card-header p-5">
+                <a href="{% url 'university:timetables:stream_timetable' stream.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ stream.stream_code }} </a>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content_outlet %}

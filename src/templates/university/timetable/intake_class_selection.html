@@ -1,0 +1,22 @@
+{% extends "../../base/base.html" %}
+
+{% block title %}Intake selection{% endblock title %}
+
+{% block content_outlet %}
+
+<div class="container">
+    <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% for intake_class in object_list %}
+        <!-- intake class -->
+        <div class="card">
+            <div class="card-header p-5">
+                <a href="{% url 'university:timetables:stream_selection' intake_class.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ intake_class.class_code }} </a>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content_outlet %}

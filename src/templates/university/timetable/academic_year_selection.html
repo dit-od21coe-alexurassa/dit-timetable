@@ -1,0 +1,22 @@
+{% extends "../../base/base.html" %}
+
+{% block title %}Academic Year selection{% endblock title %}
+
+{% block content_outlet %}
+
+<div class="container">
+    <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% for academic_year in object_list %}
+        <!-- ac year -->
+        <div class="card">
+            <div class="card-header p-5">
+                <a href="{% url 'university:timetables:intake_selection' academic_year.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ academic_year.name }} </a>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content_outlet %}

@@ -25,9 +25,22 @@
     <div class="col-md-4 col-12">
         <h4>Actions&colon;</h4>
 
-        <div class="actions-container">
-            <a href="{% url "university:intake_classes:streams:delete" class_pk=stream.intake_class.pk stream_pk=stream.pk %}" class="btn btn-danger">Delete</a>
-        </div>
+        <div class="actions-container d-flex gap-3 flex-row">
+            <a href="{% url 'university:intake_classes:streams:delete' class_pk=stream.intake_class.pk stream_pk=stream.pk %}" class="btn btn-danger btn-sm">Delete</a>
+
+            {% if stream.timetable_set.count < 1 %}
+
+            <a href="{% url 'university:timetables:add_timetable' stream.pk %}" class="btn btn-sm btn-primary">Add timetable</a>
+
+            {% else %}
+
+            <a href="{% url 'university:timetables:list' stream.pk %}" class="btn btn-primary btn-sm">View timetables</a>
+            
+            {% endif %}
+        </div>            
+                
+                            
+        </form>
     </div>
 </div>
 

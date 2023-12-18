@@ -11,6 +11,9 @@ class WeekDay(models.Model):
         help_text="Lowest is 0 and highest should be 6",
     )
 
+    def __str__(self) -> str:
+        return self.name
+
     class Meta:
         db_table = "general_week_day"
         ordering = ["sort_order"]

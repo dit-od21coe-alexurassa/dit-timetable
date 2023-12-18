@@ -10,7 +10,8 @@ class Timetable(models.Model):
     SEM2 = 2
 
     SEMESTER_CHOICES = (("1", "Sem 1"), ("2", "Sem 2"))
-    SEMESTER_CHOICES[SEM1]
+
+    title = models.CharField(max_length=255, default="", editable=False)
     intake_stream = models.ForeignKey(
         to=IntakeStream, on_delete=models.SET_NULL, null=True
     )
@@ -25,9 +26,12 @@ class Timetable(models.Model):
     )
 
     def get_absolute_url(self):
-        return reverse(
-            "university:academic_years:timetables:detail", kwargs={"pk": self.pk}
-        )
+        return reverse("university:timetables:detail", kwargs={"timetable_pk": self.pk})
 
     def __str__(self) -> str:
         return f"{self.academic_year.name}: {self.intake_stream}"
+
+    def save(self, *args, **kwargs):
+        # set title
+        self.title = f"{self.intake_stream.stream_code} - {self.academic_year.name} (Sem {self.semester})"
+        return super().save(*args, **kwargs)
