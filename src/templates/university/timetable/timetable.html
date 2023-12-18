@@ -1,8 +1,6 @@
 <ul class="nav nav-tabs" role="tablist">
     {% for week_day in week_days %}
-    <li class="nav-item">
-        <button class="nav-link" id="weekday-tab-{{ week_day.sort_order }}" data-bs-target="#weekday-{{ week_day.sort_order }}" data-bs-toggle="tab" aria-selected="{% if week_day.sort_order == 0 %}active{% endif %}">{{ week_day.name }}</button>
-    </li>
+        <button class="nav-link {% if week_day.sort_order == 0 %} active {% endif %} " id="weekday-tab-{{ week_day.sort_order }}" data-bs-target="#weekday-{{ week_day.sort_order }}" data-bs-toggle="tab" aria-selected="{% if week_day.sort_order == 0 %}active{% endif %}">{{ week_day.name }}</button>
     {% endfor %}
 </ul>
 
@@ -12,7 +10,7 @@
         {% for session in sessions %}
         {% if session.week_day == week_day %}
         <div class="table-responsive">
-            <table class="table table-light">
+            <table class="table table-light table-bordered">
 
                 <div class="tbody">
                         <tr>
@@ -53,3 +51,9 @@
     </div>
     {% endfor %}
 </div>
+
+<style>
+    .table th:nth-child(1) {
+        width: 300px;
+    }
+</style>
