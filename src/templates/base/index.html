@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %}{% endblock title %} </title>
     {% include "./bootstrap-cdn.html" %}
-    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    {% block body %}{% endblock body %}
+    {% include "./navbar.html" %}
+
+    <!-- content -->
+    <section class="content-outlet">
+        {% block body %}{% endblock body %}
+    </section>
 </body>
 </html>
+
+<style>
+    .content-outlet {
+        margin-top: 75px !important;
+    }
+</style>
