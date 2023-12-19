@@ -6,17 +6,32 @@
 
 <div class="container">
     <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% if object_list.count > 0 %}
         {% for intake_class in object_list %}
         <!-- intake class -->
-        <div class="card">
-            <div class="card-header p-5">
+        <div class="card selection-card">
+            <div class="card-body p-5">
                 <a href="{% url 'university:timetables:stream_selection' intake_class.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ intake_class.class_code }} </a>
             </div>
         </div>
     
         {% endfor %}
+
+        {% else %}
+        <p class="text-danger fs-5">No any intake class registered to this academic year.</p>
+        {% endif %}
     </div>
 
 </div>
+
+<style>
+
+    .selection-card:hover {
+        box-shadow: 4px 4px 3px #ccf;
+        transition: 0.2s box-shadow ease-in;
+    }
+    
+    </style>
+    
 
 {% endblock content_outlet %}

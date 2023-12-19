@@ -6,17 +6,28 @@
 
 <div class="container">
     <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% if object_list.count > 0 %}
         {% for stream in object_list %}
         <!-- stream -->
         <div class="card">
-            <div class="card-header p-5">
+            <div class="card-body p-5">
                 <a href="{% url 'university:timetables:stream_timetable' stream.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ stream.stream_code }} </a>
             </div>
         </div>
     
         {% endfor %}
+
+        {% else %}
+        <p class="text-danger fs-5">No any stream registered to this intake.</p>
+        {% endif %}
     </div>
 
 </div>
+<style>
+    .selection-card:hover {
+        box-shadow: 4px 4px 3px #ccf;
+        transition: 0.2s box-shadow ease-in;
+    }
+</style>
 
 {% endblock content_outlet %}

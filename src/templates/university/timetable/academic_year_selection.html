@@ -6,17 +6,31 @@
 
 <div class="container">
     <div class="d-flex flex-row gap-4 flex-wrap justify-content-center">
+        {% if object_list.count > 0 %}
         {% for academic_year in object_list %}
         <!-- ac year -->
-        <div class="card">
-            <div class="card-header p-5">
+        <div class="card  selection-card">
+            <div class="card-body p-5">
                 <a href="{% url 'university:timetables:intake_selection' academic_year.pk %}" class="stretched-link text-decoration-none text-dark fs-4 fw-bold"> {{ academic_year.name }} </a>
             </div>
         </div>
-    
+        
         {% endfor %}
+
+        {% else %}
+        <p class="text-danger fs-5">No any academic year registered to select.</p>
+        {% endif %}
     </div>
 
 </div>
+
+<style>
+
+.selection-card:hover {
+    box-shadow: 4px 4px 3px #ccf;
+    transition: 0.2s box-shadow ease-in;
+}
+
+</style>
 
 {% endblock content_outlet %}
