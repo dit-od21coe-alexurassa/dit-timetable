@@ -14,7 +14,7 @@ class Session(models.Model):
     between a lecturer, module and it's related timetable. With that means no lecturer couuld have
     multiple copies of the same module within the same timetable.
     """
-    
+
     timetable = models.ForeignKey(to=Timetable, on_delete=models.CASCADE)
     lecturer = models.ForeignKey(to=Lecturer, on_delete=models.SET_NULL, null=True)
     module = models.ForeignKey(to=Module, on_delete=models.SET_NULL, null=True)
@@ -28,6 +28,6 @@ class Session(models.Model):
 
     def __str__(self) -> str:
         return f"{self.pk} -> {self.timetable.intake_stream}"
-    
+
     class Meta:
         unique_together = ["timetable", "lecturer", "module"]

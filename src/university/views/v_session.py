@@ -12,6 +12,7 @@ class SessionAddView(generic.CreateView):
     """Allows adding of a session to a specific visited timetable item. Timetable `pk` must be supplied in the url
     via `timetable_pk` kwarg
     """
+
     form_class = SessionForm
 
     def get_queryset(self):

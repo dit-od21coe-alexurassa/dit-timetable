@@ -4,18 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('university', '0006_timetable_title'),
+        ("university", "0006_timetable_title"),
     ]
 
     operations = [
         migrations.AlterUniqueTogether(
-            name='session',
-            unique_together={('timetable', 'lecturer', 'module')},
+            name="session",
+            unique_together={("timetable", "lecturer", "module")},
         ),
         migrations.AlterUniqueTogether(
-            name='timetable',
-            unique_together={('semester', 'intake_stream', 'academic_year')},
+            name="timetable",
+            unique_together={("semester", "intake_stream", "academic_year")},
         ),
     ]

@@ -10,6 +10,7 @@ from ..models import *
 from ..forms import TimetableForm, SessionForm
 from ..utils import get_stream
 
+
 class CreateTimetableView(generic.CreateView):
     template_name = "university/timetable/add_timetable.html"
     form_class = TimetableForm

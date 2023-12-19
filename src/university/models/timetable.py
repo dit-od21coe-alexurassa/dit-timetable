@@ -40,6 +40,6 @@ class Timetable(models.Model):
         # set title
         self.title = f"{self.intake_stream.stream_code} - {self.academic_year.name} (Sem {self.semester})"
         return super().save(*args, **kwargs)
-    
+
     class Meta:
         unique_together = ["semester", "intake_stream", "academic_year"]
