@@ -1,7 +1,27 @@
 <nav class="nav navbar fixed-top px-3">
     <div class="navbar-brand">
-        <a href="" class="text-decoration-none text-light fw-bolder fs-4 text-logo">DIT Timetable</a>
+        <a href="#" class="text-decoration-none text-light fw-bolder fs-4 text-logo">DIT Timetable</a>
     </div>
+
+    <ul class="nav  ms-auto">
+        <li class="nav-item">
+            <a class="nav-link active" href="" data-bs-toggle="dropdown" aria-expanded="false">Management</a>
+
+            <div class="dropdown">
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" aria-current="page">
+                        <a href='{% url "university:modules:list" %}' class="text-decoration-none">Modules</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href='{% url "university:intake_classes:list" %}' class="text-decoration-none">Intake classes</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a href='{% url "university:academic_years:list" %}' class="text-decoration-none">Academic years</a>
+                    </li>
+                </ul>
+            </div>
+        </li>   
+    </ul>
 </nav>
 
 

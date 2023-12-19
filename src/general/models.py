@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class WeekDay(models.Model):
-    name = models.CharField(max_length=8, unique=True)
+    name = models.CharField(max_length=10, unique=True)
     sort_order = models.IntegerField(
         default=0,
         unique=True,
