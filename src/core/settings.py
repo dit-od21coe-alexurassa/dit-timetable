@@ -1,5 +1,11 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
+
+def get_env(key: str) -> str:
+    return os.environ.get(key)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-xq)=bd3b$td8v7(%zp(is&4wob29$zu$2o3gbve_83&a0mzg)@"
+SECRET_KEY = get_env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,11 +74,11 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "timetable_project",
-        "HOST": "localhost",
-        "USER": "postgres",
-        "PORT": 5432,
-        "PASSWORD": "Alex@psql23",
+        "NAME": get_env("DB_NAME"),
+        "HOST": get_env("DB_HOST"),
+        "USER": get_env("DB_USER"),
+        "PORT": get_env("DB_PORT"),
+        "PASSWORD": get_env("DB_PASSWORD"),
     }
 }
 

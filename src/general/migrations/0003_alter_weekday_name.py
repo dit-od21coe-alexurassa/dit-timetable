@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('general', '0002_alter_weekday_sort_order'),
+        ("general", "0002_alter_weekday_sort_order"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='weekday',
-            name='name',
+            model_name="weekday",
+            name="name",
             field=models.CharField(max_length=10, unique=True),
         ),
     ]
